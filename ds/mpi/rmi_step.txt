@@ -1,0 +1,39 @@
+1. Download openmpi-4.1.4.tar.bz2 from http://www.open-mpi.org 
+2. Goto the terminal (Command prompt)
+3. update using
+sudo apt-get update
+sudo apt install gcc {if not already installed}
+4. Goto the directory which contains the downloaded file (download folder)
+5. Extract the files using (download folder)
+tar -jxf openmpi-4.1.4.tar.bz2
+6. The directory openmpi-4.1.4 is created
+7. Go into the source directory through terminal 
+  Command prompt  > cd     /home/it/download/openmpi-1.4.4
+7. Configure, compile and install by executing the following commands
+    Command prompt//home/it/download/openmpi-1.4.4 > ./configure --prefix=$HOME/opt/openmpi
+                                                   make all
+                                                  make install
+8. Now openmpi folder is created in ‘opt‘ folder of Home directory.
+9. Now the folder LP5 can be deleted (optional)
+echo "export PATH=\$PATH:\$HOME/opt/openmpi/bin" >> $HOME/.bashrc 
+echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$HOME/opt/openmpi/lib">>$HOME/.bashrc
+
+10. Update the PATH and LD_LIBRARY_PATH environment variable using
+echo "export PATH=\$PATH:\$HOME/it/opt/openmpi/bin" >> $HOME/it.bashrc
+echo "export  LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:\$HOME/it/opt/openmpi/lib">>$HOME/it.bashrc
+11. Compile the program using
+mpicc name of the program
+example : mpicc hello1.c
+12. Execute the program using
+mpirun -np N ./a.out
+example : mpirun -np 2 ./a.out
+example : mpirun -np 3 ./a.out
+example : mpirun -np 4 ./a.out
+
+/****** The cores 2 and will be in waiting mode … Press Ctrl+z to end the execution *******/
+
+Assignment program: Add 20 numbers in an array using 4 cores
+C:\>cd  /opt/openmpi/bin
+C:\opt/openmpi/bin> edit  program_name.c
+Example : 
+               C:\opt/openmpi/bin> edit  add.c
